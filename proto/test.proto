@@ -4,6 +4,8 @@ package main;
 
 option go_package = "./proto";
 
+import "github.com/WORUS/grpc_golang/google/api/annotations.proto";
+
 service TestApi {
     rpc Echo(ResponseRequest) returns (ResponseRequest) {}
     rpc GetUser(UserRequest) returns (UserResponse) {}
