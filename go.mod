@@ -1,4 +1,4 @@
-module github.com/WORUS/video-service
+module github.com/WORUS/grpc_video-service
 
 go 1.21.0
 

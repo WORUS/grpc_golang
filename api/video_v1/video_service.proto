@@ -4,7 +4,7 @@ package video_v1;
 
 option go_package = "github.com/WORUS/grpc_golang";
 
-service VideoV1 {
+service Video {
     rpc Get(GetRequest) returns (GetResponse);
 }
 

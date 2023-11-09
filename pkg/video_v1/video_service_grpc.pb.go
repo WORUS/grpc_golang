@@ -19,89 +19,89 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	VideoV1_Get_FullMethodName = "/video_v1.VideoV1/Get"
+	Video_Get_FullMethodName = "/video_v1.Video/Get"
 )
 
-// VideoV1Client is the client API for VideoV1 service.
+// VideoClient is the client API for Video service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type VideoV1Client interface {
+type VideoClient interface {
 	Get(ctx context.Context, in *GetRequest, opts ...grpc.CallOption) (*GetResponse, error)
 }
 
-type videoV1Client struct {
+type videoClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewVideoV1Client(cc grpc.ClientConnInterface) VideoV1Client {
-	return &videoV1Client{cc}
+func NewVideoClient(cc grpc.ClientConnInterface) VideoClient {
+	return &videoClient{cc}
 }
 
-func (c *videoV1Client) Get(ctx context.Context, in *GetRequest, opts ...grpc.CallOption) (*GetResponse, error) {
+func (c *videoClient) Get(ctx context.Context, in *GetRequest, opts ...grpc.CallOption) (*GetResponse, error) {
 	out := new(GetResponse)
-	err := c.cc.Invoke(ctx, VideoV1_Get_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, Video_Get_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// VideoV1Server is the server API for VideoV1 service.
-// All implementations must embed UnimplementedVideoV1Server
+// VideoServer is the server API for Video service.
+// All implementations must embed UnimplementedVideoServer
 // for forward compatibility
-type VideoV1Server interface {
+type VideoServer interface {
 	Get(context.Context, *GetRequest) (*GetResponse, error)
-	mustEmbedUnimplementedVideoV1Server()
+	mustEmbedUnimplementedVideoServer()
 }
 
-// UnimplementedVideoV1Server must be embedded to have forward compatible implementations.
-type UnimplementedVideoV1Server struct {
+// UnimplementedVideoServer must be embedded to have forward compatible implementations.
+type UnimplementedVideoServer struct {
 }
 
-func (UnimplementedVideoV1Server) Get(context.Context, *GetRequest) (*GetResponse, error) {
+func (UnimplementedVideoServer) Get(context.Context, *GetRequest) (*GetResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Get not implemented")
 }
-func (UnimplementedVideoV1Server) mustEmbedUnimplementedVideoV1Server() {}
+func (UnimplementedVideoServer) mustEmbedUnimplementedVideoServer() {}
 
-// UnsafeVideoV1Server may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to VideoV1Server will
+// UnsafeVideoServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to VideoServer will
 // result in compilation errors.
-type UnsafeVideoV1Server interface {
-	mustEmbedUnimplementedVideoV1Server()
+type UnsafeVideoServer interface {
+	mustEmbedUnimplementedVideoServer()
 }
 
-func RegisterVideoV1Server(s grpc.ServiceRegistrar, srv VideoV1Server) {
-	s.RegisterService(&VideoV1_ServiceDesc, srv)
+func RegisterVideoServer(s grpc.ServiceRegistrar, srv VideoServer) {
+	s.RegisterService(&Video_ServiceDesc, srv)
 }
 
-func _VideoV1_Get_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Video_Get_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VideoV1Server).Get(ctx, in)
+		return srv.(VideoServer).Get(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: VideoV1_Get_FullMethodName,
+		FullMethod: Video_Get_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VideoV1Server).Get(ctx, req.(*GetRequest))
+		return srv.(VideoServer).Get(ctx, req.(*GetRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// VideoV1_ServiceDesc is the grpc.ServiceDesc for VideoV1 service.
+// Video_ServiceDesc is the grpc.ServiceDesc for Video service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var VideoV1_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "video_v1.VideoV1",
-	HandlerType: (*VideoV1Server)(nil),
+var Video_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "video_v1.Video",
+	HandlerType: (*VideoServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Get",
-			Handler:    _VideoV1_Get_Handler,
+			Handler:    _Video_Get_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
