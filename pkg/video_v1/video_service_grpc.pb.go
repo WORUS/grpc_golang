@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.3.0
 // - protoc             v4.25.0
-// source: api/video_v1/service_grpc.proto
+// source: api/video_v1/video_service.proto
 
 package grpc_golang
 
@@ -105,5 +105,5 @@ var VideoV1_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "api/video_v1/service_grpc.proto",
+	Metadata: "api/video_v1/video_service.proto",
 }
