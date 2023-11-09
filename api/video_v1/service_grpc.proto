@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package video_v1;
+
+option go_package = "github.com/WORUS/grpc_golang";
+
+service VideoV1 {
+    rpc Get(GetRequest) returns (GetResponse);
+}
+
+message VideoInfo {
+    int64 id = 1;
+    string name = 2;
+}
+
+message GetRequest {
+    int64 id = 1;
+}
+
+message GetResponse {
+    VideoInfo info = 1;
+}

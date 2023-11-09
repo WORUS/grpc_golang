@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package video_v1;
+
+option go_package = "github.com/WORUS/grpc_golang";
+
+message VideoInfo {
+    int64 id = 1;
+    string name = 2;
+}
