@@ -5,7 +5,7 @@ import (
 	"log"
 	"net"
 
-	pb "github.com/WORUS/grpc_golang/gen/proto"
+	desc "github.com/WORUS/grpc_golang/pkg/video_v1"
 	"google.golang.org/grpc"
 )
 
